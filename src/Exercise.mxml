@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
-			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600">
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600"
+			   xmlns:comp="components.*">
 	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
+
+	<s:DataGrid id="Table" x="10" y="37" width="561" borderColor="#D0D7E5" chromeColor="#D0D7E5"
+				editable="true" requestedRowCount="4" symbolColor="#000000" textAlign="left">
+		<s:columns>
+			<s:ArrayList>
+				<s:GridColumn dataField="dataField1" headerText="A" headerRenderer="components.myHeaderRenderer"></s:GridColumn>
+				<s:GridColumn dataField="dataField2" headerText="B" headerRenderer="components.myHeaderRenderer"></s:GridColumn>
+				<s:GridColumn dataField="dataField3" headerText="C" headerRenderer="components.myHeaderRenderer"></s:GridColumn>
+				<s:GridColumn dataField="dataField4" headerText="D" headerRenderer="components.myHeaderRenderer"></s:GridColumn>
+				<s:GridColumn dataField="dataField5" headerText="E" headerRenderer="components.myHeaderRenderer"></s:GridColumn>
+			</s:ArrayList>
+		</s:columns>
+		<s:typicalItem>
+			<fx:Object dataField1="Sample Data" dataField2="Sample Data" dataField3="Sample Data" dataField4="Sample Data" dataField5="Sample Data"></fx:Object>
+		</s:typicalItem>
+	</s:DataGrid>
+	<s:BorderContainer x="10" y="10" width="66" height="19" borderVisible="false">
+		<s:layout>
+			<s:HorizontalLayout gap="0" paddingBottom="0" paddingLeft="0" paddingRight="0"
+								paddingTop="0" verticalAlign="top"/>
+		</s:layout>
+		<s:Button width="22" height="19" chromeColor="#C6D9F1"
+				  icon="@Embed('pictures/LeftAligne.png')"/>
+		<s:Button width="22" height="19" chromeColor="#C6D9F1"
+				  icon="@Embed('pictures/CenterAligne.png')"/>
+		<s:Button width="22" height="19" chromeColor="#C6D9F1"
+				  icon="@Embed('pictures/RightAligne.png')"/>
+	</s:BorderContainer>
 </s:Application>
