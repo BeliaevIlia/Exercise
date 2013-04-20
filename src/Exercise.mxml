@@ -4,10 +4,23 @@
 			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600"
 			   xmlns:comp="components.*">
 	<fx:Declarations>
+		<fx:XMLList id="ModXMLList">
+			<mod img='pictures/cb1.png' sname="Формат не указан" name="Общий" />
+			<mod img='pictures/cb2.png' sname="" name="Числовой" />
+			<mod img='pictures/cb3.png' sname="" name="Денежный" />
+			<mod img='pictures/cb4.png' sname="" name="Финансовый" />
+			<mod img='pictures/cb5.png' sname="" name="Краткая дата" />
+			<mod img='pictures/cb6.png' sname="" name="Длиный формат даты" />
+			<mod img='pictures/cb7.png' sname="" name="Время" />
+			<mod img='pictures/cb8.png' sname="" name="Процентный" />
+			<mod img='pictures/cb9.png' sname="" name="Дробный" />
+			<mod img='pictures/cb10.png' sname="" name="Экспотенциальный" />
+		</fx:XMLList>
 	</fx:Declarations>
 
 	<s:DataGrid id="Table" x="10" y="37" width="561" borderColor="#D0D7E5" chromeColor="#D0D7E5"
-				editable="true" requestedRowCount="4" symbolColor="#000000" textAlign="left">
+				editable="true" requestedRowCount="4"
+				symbolColor="#000000" textAlign="left">
 		<s:columns>
 			<s:ArrayList>
 				<s:GridColumn dataField="dataField1" headerText="A" headerRenderer="components.myHeaderRenderer"></s:GridColumn>
@@ -26,11 +39,15 @@
 			<s:HorizontalLayout gap="0" paddingBottom="0" paddingLeft="0" paddingRight="0"
 								paddingTop="0" verticalAlign="top"/>
 		</s:layout>
-		<s:Button width="22" height="19" chromeColor="#C6D9F1"
-				  icon="@Embed('pictures/LeftAligne.png')"/>
-		<s:Button width="22" height="19" chromeColor="#C6D9F1"
-				  icon="@Embed('pictures/CenterAligne.png')"/>
-		<s:Button width="22" height="19" chromeColor="#C6D9F1"
-				  icon="@Embed('pictures/RightAligne.png')"/>
+		<s:Button width="22" height="19" chromeColor="#C0D8F0"
+				  icon="@Embed('pictures/LeftAligne.png')" skinClass="components.myButtonSkin"/>
+		<s:Button width="22" height="19" chromeColor="#C0D8F0"
+				  icon="@Embed('pictures/CenterAligne.png')" skinClass="components.myButtonSkin"/>
+		<s:Button width="22" height="19" chromeColor="#C0D8F0"
+				  icon="@Embed('pictures/RightAligne.png')" skinClass="components.myButtonSkin"/>
 	</s:BorderContainer>
+	<mx:ComboBox id="comboBox" x="124" y="10" width="111" chromeColor="#B1CCE8"
+				 dataProvider="{ModXMLList}" dropdownWidth="200"
+				 itemRenderer="components.myComboBoxRenderer" labelField="@name" prompt="Общий"
+				 rollOverColor="#FEEB92" rowCount="10" selectionColor="#FEEB92"/>
 </s:Application>

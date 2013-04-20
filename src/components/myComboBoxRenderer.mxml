@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- http://blog.flexexamples.com/2007/09/25/creating-a-custom-combobox-item-renderer-in-flex/ -->
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+		 xmlns:s="library://ns.adobe.com/flex/spark">
+	<mx:HBox borderColor="#FFFFFF" borderVisible="false">
+		<mx:Image width="35" height="35" source="{data.@img}"/>
+		<mx:VBox height="100%" borderColor="#FFFFFF" borderVisible="false">
+			<mx:Label text="{data.@name}"
+					  fontSize="12"
+					  fontWeight="bold" 
+					  color="#0000FF"/>
+			<mx:Label text="{data.@sname}"
+					  fontSize="10"
+					  paddingLeft="10" 
+					  color="#0000FF"/>
+		</mx:VBox>
+	</mx:HBox>
+	
+</mx:VBox>
