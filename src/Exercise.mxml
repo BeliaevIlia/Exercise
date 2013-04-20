@@ -3,6 +3,32 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
 			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600"
 			   xmlns:comp="components.*">
+	
+	<fx:Script>
+		<![CDATA[
+			protected function hslider1_changeHandler(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				scaleLabel.text=scaleSlider.value.toString()+"%";
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				scaleSlider.value++;
+				scaleLabel.text=scaleSlider.value.toString()+"%";
+			}
+			
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				scaleSlider.value--;
+				scaleLabel.text=scaleSlider.value.toString()+"%";
+			}
+			
+		]]>
+	</fx:Script>
+	
 	<fx:Declarations>
 		<fx:XMLList id="ModXMLList">
 			<mod img='pictures/cb1.png' sname="Формат не указан" name="Общий" />
@@ -34,7 +60,7 @@
 			<fx:Object dataField1="Sample Data" dataField2="Sample Data" dataField3="Sample Data" dataField4="Sample Data" dataField5="Sample Data"></fx:Object>
 		</s:typicalItem>
 	</s:DataGrid>
-	<s:BorderContainer x="10" y="10" width="66" height="19" borderVisible="false">
+	<s:BorderContainer x="17" y="10" width="66" height="19" borderVisible="false">
 		<s:layout>
 			<s:HorizontalLayout gap="0" paddingBottom="0" paddingLeft="0" paddingRight="0"
 								paddingTop="0" verticalAlign="top"/>
@@ -50,4 +76,17 @@
 				 dataProvider="{ModXMLList}" dropdownWidth="200"
 				 itemRenderer="components.myComboBoxRenderer" labelField="@name" prompt="Общий"
 				 rollOverColor="#FEEB92" rowCount="10" selectionColor="#FEEB92"/>
+	<s:HGroup x="327" y="174" width="244" height="27" chromeColor="#B1CCE8" visible="true"
+			  contentBackgroundColor="#B1CCE8" horizontalAlign="right" verticalAlign="middle">
+		<s:Label id="scaleLabel" x="40" y="5" text="50%"/>
+		<s:Button width="16" height="16" label="-" chromeColor="#B1CCE8"
+				  click="button2_clickHandler(event)" fontSize="18" fontWeight="bold"
+				  skinClass="components.myScaleButtonSkin"/>
+		<s:HSlider id="scaleSlider" change="hslider1_changeHandler(event)" chromeColor="#B1CCE8"
+				   maximum="100" minimum="0" skinClass="components.mySliderScin" stepSize="1"
+				   value="50"/>
+		<s:Button width="16" height="16" label="+" chromeColor="#B1CCE8"
+				  click="button1_clickHandler(event)" fontSize="16" fontWeight="bold"
+				  skinClass="components.myScaleButtonSkin"/>
+	</s:HGroup>
 </s:Application>
