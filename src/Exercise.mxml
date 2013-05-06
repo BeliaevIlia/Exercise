@@ -3,9 +3,16 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
 			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600"
 			   xmlns:comp="components.*">
+	<fx:Style source="Exercise.css"/>
 	
 	<fx:Script>
 		<![CDATA[
+			import flashx.textLayout.formats.Float;
+			
+			import mx.events.ResizeEvent;
+			
+			import spark.components.gridClasses.CellPosition;
+			import spark.events.GridSelectionEvent;
 			protected function hslider1_changeHandler(event:Event):void
 			{
 				// TODO Auto-generated method stub
@@ -26,6 +33,13 @@
 				scaleLabel.text=scaleSlider.value.toString()+"%";
 			}
 			
+			protected function Table_selectionChangingHandler(event:GridSelectionEvent):void
+			{
+				// TODO Auto-generated method stub
+				var index:int = event.selectionChange.columnIndex;
+				if(index<1)
+					event.preventDefault();
+			}			
 		]]>
 	</fx:Script>
 	
@@ -44,21 +58,41 @@
 		</fx:XMLList>
 	</fx:Declarations>
 
-	<s:DataGrid id="Table" x="10" y="37" width="561" borderColor="#D0D7E5" chromeColor="#D0D7E5"
-				editable="true" requestedRowCount="4"
-				symbolColor="#000000" textAlign="left">
+	<s:DataGrid id="Table" x="10" y="37" borderColor="#D0D7E5" chromeColor="#D0D7E5"
+				requestedRowCount="10" skinClass="components.myGridSkin"
+				selectionMode="singleCell" resizableColumns="true"
+				selectionChanging="Table_selectionChangingHandler(event)">
 		<s:columns>
 			<s:ArrayList>
-				<s:GridColumn dataField="dataField1" headerText="A" headerRenderer="components.myHeaderRenderer"></s:GridColumn>
-				<s:GridColumn dataField="dataField2" headerText="B" headerRenderer="components.myHeaderRenderer"></s:GridColumn>
-				<s:GridColumn dataField="dataField3" headerText="C" headerRenderer="components.myHeaderRenderer"></s:GridColumn>
-				<s:GridColumn dataField="dataField4" headerText="D" headerRenderer="components.myHeaderRenderer"></s:GridColumn>
-				<s:GridColumn dataField="dataField5" headerText="E" headerRenderer="components.myHeaderRenderer"></s:GridColumn>
+				<s:GridColumn minWidth="25" maxWidth="25" dataField="dataField1"
+							  headerRenderer="components.myImageHeaderRenderer"
+							  itemRenderer="components.myColumn0ItenRenderer"></s:GridColumn>
+				<s:GridColumn dataField="dataField2" headerText="A" minWidth="25"></s:GridColumn>
+				<s:GridColumn dataField="dataField3" headerText="B" minWidth="25"></s:GridColumn>
+				<s:GridColumn dataField="dataField4" headerText="C" minWidth="25"></s:GridColumn>
+				<s:GridColumn dataField="dataField5" headerText="D" minWidth="25"></s:GridColumn>
+				<s:GridColumn dataField="dataField2" headerText="E" minWidth="25"></s:GridColumn>
+				<s:GridColumn dataField="dataField3" headerText="F" minWidth="25"></s:GridColumn>
+				<s:GridColumn dataField="dataField4" headerText="G" minWidth="25"></s:GridColumn>
+				<s:GridColumn dataField="dataField5" headerText="H" minWidth="25"></s:GridColumn>
+				<s:GridColumn dataField="dataField5" headerText="I" minWidth="25"></s:GridColumn>
 			</s:ArrayList>
 		</s:columns>
 		<s:typicalItem>
 			<fx:Object dataField1="Sample Data" dataField2="Sample Data" dataField3="Sample Data" dataField4="Sample Data" dataField5="Sample Data"></fx:Object>
 		</s:typicalItem>
+		<s:ArrayList>
+			<fx:Object dataField1="1" dataField2="" dataField3=""></fx:Object>
+			<fx:Object dataField1="2" dataField2="" dataField3=""></fx:Object>
+			<fx:Object dataField1="3" dataField2="" dataField3=""></fx:Object>
+			<fx:Object dataField1="4" dataField2="" dataField3=""></fx:Object>
+			<fx:Object dataField1="5" dataField2="" dataField3=""></fx:Object>
+			<fx:Object dataField1="6" dataField2="" dataField3=""></fx:Object>
+			<fx:Object dataField1="7" dataField2="" dataField3=""></fx:Object>
+			<fx:Object dataField1="8" dataField2="" dataField3=""></fx:Object>
+			<fx:Object dataField1="9" dataField2="" dataField3=""></fx:Object>
+			<fx:Object dataField1="10" dataField2="" dataField3=""></fx:Object>
+		</s:ArrayList>
 	</s:DataGrid>
 	<s:BorderContainer x="17" y="10" width="66" height="19" borderVisible="false">
 		<s:layout>
@@ -76,7 +110,7 @@
 				 dataProvider="{ModXMLList}" dropdownWidth="200"
 				 itemRenderer="components.myComboBoxRenderer" labelField="@name" prompt="Общий"
 				 rollOverColor="#FEEB92" rowCount="10" selectionColor="#FEEB92"/>
-	<s:HGroup x="327" y="174" width="244" height="27" chromeColor="#B1CCE8" visible="true"
+	<s:HGroup x="327" y="330" width="244" height="27" chromeColor="#B1CCE8" visible="true"
 			  contentBackgroundColor="#B1CCE8" horizontalAlign="right" verticalAlign="middle">
 		<s:Label id="scaleLabel" x="40" y="5" text="50%"/>
 		<s:Button width="16" height="16" label="-" chromeColor="#B1CCE8"

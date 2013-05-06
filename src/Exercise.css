@@ -1,0 +1,12 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+
+global
+{
+	chrome-color: #D3DBE9;
+	roll-over-color: #D3DBE9;
+	content-background-color: #FFFFFF;
+}
+	
